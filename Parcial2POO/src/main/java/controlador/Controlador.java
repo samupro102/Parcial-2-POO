@@ -12,7 +12,7 @@ import modelo.Profesor;
  * @author Windows 11
  */
 public class Controlador {
-         private Colegio colegio;
+     private Colegio colegio;
     public Colegio getColegio() {
         return colegio;
     }
@@ -20,4 +20,24 @@ public class Controlador {
     public void setColegio(Colegio colegio) {
         this.colegio = colegio;
     }
+
+    public boolean registrarEstudiante(String nombre, String direccion,
+            String telefono, int dia, int mes, int anio,
+            String codigo, String grado) {
+        Fecha f = new Fecha();
+        f.setDia(dia);
+        f.setMes(mes);
+        f.setAnio(anio);
+
+        Estudiante e = new Estudiante();
+        e.setNombre(nombre);
+        e.setDireccion(direccion);
+        e.setTelefono(telefono);
+        e.setFechaNacimiento(f);
+        e.setCodigo(codigo);
+        e.setGrado(grado);
+
+        return colegio.registrarEstudiante(e);
+    }
+
 }
