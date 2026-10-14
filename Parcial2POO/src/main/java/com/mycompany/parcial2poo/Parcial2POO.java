@@ -3,7 +3,9 @@
  */
 
 package com.mycompany.parcial2poo;
-
+import controlador.Controlador;
+import modelo.Colegio;
+import vista.VentanaPrincipal;
 /**
  *
  * @author Windows 11
@@ -11,6 +13,14 @@ package com.mycompany.parcial2poo;
 public class Parcial2POO {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-    }
+         Colegio colegio = new Colegio();
+
+        Controlador controlador = new Controlador();
+        controlador.setColegio(colegio);
+
+        VentanaPrincipal ventana = new VentanaPrincipal();
+        ventana.setControlador(controlador);
+        ventana.setVisible(true);
+    }    
 }
+
