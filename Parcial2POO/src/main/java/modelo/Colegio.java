@@ -52,4 +52,16 @@ public class Colegio {
     public void setTotalProfesores(int totalProfesores) {
         this.totalProfesores = totalProfesores;
     }
+    public boolean registrarEstudiante(Estudiante e) {
+        if (totalEstudiantes < estudiantes.length) {
+            estudiantes[totalEstudiantes] = e;
+            totalEstudiantes++;
+            return true;
+        }
+        return false;
+    }
+    
+    
+    
+    
 }
