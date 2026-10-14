@@ -60,7 +60,14 @@ public class Colegio {
         }
         return false;
     }
-    
+    public boolean registrarProfesor(Profesor p) {
+        if (totalProfesores < profesores.length) {
+            profesores[totalProfesores] = p;
+            totalProfesores++;
+            return true;
+        }
+        return false;
+    }
     
     
     
