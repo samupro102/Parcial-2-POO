@@ -53,7 +53,10 @@ public boolean registrarProfesor(String nombre, String direccion,
         return colegio.registrarProfesor(p);
 }
 
-
-
-
+public String reporteEstudiantes() {
+        return colegio.reporteEstudiantes();
+    }
+ public String reporteProfesores() {
+        return colegio.reporteProfesoresPorSalario();
+    }
 }
