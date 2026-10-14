@@ -36,7 +36,7 @@ public class Fecha {
         this.anio = anio;
     }
 
-    // Para mostrar la fecha en los reportes, por ejemplo 15/3/1980
+    
     @Override
     public String toString() {
         return dia + "/" + mes + "/" + anio;
