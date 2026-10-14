@@ -13,5 +13,11 @@ import modelo.Profesor;
  */
 public class Controlador {
          private Colegio colegio;
+    public Colegio getColegio() {
+        return colegio;
+    }
 
+    public void setColegio(Colegio colegio) {
+        this.colegio = colegio;
+    }
 }
