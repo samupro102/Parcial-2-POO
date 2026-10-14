@@ -3,14 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
-
+import javax.swing.JOptionPane;
+import modelo.Colegio;
+import modelo.Estudiante;
+import modelo.Fecha;
+import modelo.Profesor;
+import controlador.Controlador;
 /**
  *
  * @author Windows 11
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
+ private Controlador controlador;
+
+    public Controlador getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(Controlador controlador) {
+        this.controlador = controlador;
+    }    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
 
     /**
      * Creates new form VentanaPrincipal
@@ -76,14 +89,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtHorasDictadas.setText("jTextField12");
 
         btnRegistrarEstudiante.setText("jButton1");
+        btnRegistrarEstudiante.addActionListener(this::btnRegistrarEstudianteActionPerformed);
 
         btnRegistrarProfesor.setText("jButton2");
+        btnRegistrarProfesor.addActionListener(this::btnRegistrarProfesorActionPerformed);
 
         btnReporteEstudiantes.setText("jButton3");
+        btnReporteEstudiantes.addActionListener(this::btnReporteEstudiantesActionPerformed);
 
         btnReporteProfesores.setText("jButton4");
+        btnReporteProfesores.addActionListener(this::btnReporteProfesoresActionPerformed);
 
         btnImprimir.setText("jButton5");
+        btnImprimir.addActionListener(this::btnImprimirActionPerformed);
 
         txtReporte.setColumns(20);
         txtReporte.setRows(5);
@@ -179,6 +197,69 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegistrarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEstudianteActionPerformed
+         try {
+            boolean registrado = controlador.registrarEstudiante(
+                    txtNombre.getText(),
+                    txtDireccion.getText(),
+                    txtTelefono.getText(),
+                    Integer.parseInt(txtDia.getText()),
+                    Integer.parseInt(txtMes.getText()),
+                    Integer.parseInt(txtAnio.getText()),
+                    txtCodigo.getText(),
+                    txtGrado.getText());
+
+            if (registrado) {
+                JOptionPane.showMessageDialog(this, "Estudiante registrado");
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay espacio para más estudiantes");
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Día, mes y año deben ser números");
+        }
+    }//GEN-LAST:event_btnRegistrarEstudianteActionPerformed
+
+    private void btnRegistrarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProfesorActionPerformed
+          try {
+            boolean registrado = controlador.registrarProfesor(
+                    txtNombre.getText(),
+                    txtDireccion.getText(),
+                    txtTelefono.getText(),
+                    Integer.parseInt(txtDia.getText()),
+                    Integer.parseInt(txtMes.getText()),
+                    Integer.parseInt(txtAnio.getText()),
+                    txtCedula.getText(),
+                    txtArea.getText(),
+                    Double.parseDouble(txtSalarioHora.getText()),
+                    Integer.parseInt(txtHorasDictadas.getText()));
+
+            if (registrado) {
+                JOptionPane.showMessageDialog(this, "Profesor registrado");
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay espacio para más profesores");
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Fecha, salario y horas deben ser números");
+        }
+    }//GEN-LAST:event_btnRegistrarProfesorActionPerformed
+
+    private void btnReporteEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteEstudiantesActionPerformed
+                        txtReporte.setText(controlador.reporteEstudiantes());
+    }//GEN-LAST:event_btnReporteEstudiantesActionPerformed
+
+    private void btnReporteProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteProfesoresActionPerformed
+                        txtReporte.setText(controlador.reporteProfesores());
+
+    }//GEN-LAST:event_btnReporteProfesoresActionPerformed
+
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+          try {
+            txtReporte.print();
+        } catch (java.awt.print.PrinterException ex) {
+            JOptionPane.showMessageDialog(this, "No se pudo imprimir el reporte");
+        }
+    }//GEN-LAST:event_btnImprimirActionPerformed
 
     /**
      * @param args the command line arguments
