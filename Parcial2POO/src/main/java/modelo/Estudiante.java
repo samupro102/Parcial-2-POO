@@ -9,5 +9,6 @@ package modelo;
  * @author Windows 11
  */
 public class Estudiante extends Persona{
-    
+    private String codigo;
+    private String grado;
 }
