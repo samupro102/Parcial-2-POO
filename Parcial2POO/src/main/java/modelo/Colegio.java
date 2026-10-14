@@ -68,7 +68,20 @@ public class Colegio {
         }
         return false;
     }
-    
+    public String reporteEstudiantes() {
+        String reporte = "LISTA DE ESTUDIANTES\n";
+        reporte += "----------------------------------------\n";
+        for (int i = 0; i < totalEstudiantes; i++) {
+            Estudiante e = estudiantes[i];
+            reporte += (i + 1) + ". " + e.getNombre()
+                    + " | Codigo: " + e.getCodigo()
+                    + " | Grado: " + e.getGrado()
+                    + " | Telefono: " + e.getTelefono()
+                    + " | Direccion: " + e.getDireccion()
+                    + " | Nacimiento: " + e.getFechaNacimiento() + "\n";
+        }
+        return reporte;
+    }
     
     
 }
