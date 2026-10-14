@@ -8,9 +8,22 @@ package modelo;
  *
  * @author Windows 11
  */
-public class Profesor {
+public class Profesor extends Persona{
     private String cedula;
     private String area;
     private double salarioHora;
     private int horasDictadas;
+    
+    public Profesor(String nombre, String direccion, String telefono,
+            Fecha fechaNacimiento, String cedula, String area,
+            double salarioHora, int horasDictadas) {
+        setNombre(nombre);
+        setDireccion(direccion);
+        setTelefono(telefono);
+        setFechaNacimiento(fechaNacimiento);
+        this.cedula = cedula;
+        this.area = area;
+        this.salarioHora = salarioHora;
+        this.horasDictadas = horasDictadas;
+    }
 }
