@@ -9,5 +9,8 @@ package modelo;
  * @author Windows 11
  */
 public class Profesor {
-    
+    private String cedula;
+    private String area;
+    private double salarioHora;
+    private int horasDictadas;
 }
