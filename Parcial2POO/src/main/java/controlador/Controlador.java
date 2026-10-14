@@ -39,5 +39,21 @@ public class Controlador {
 
         return colegio.registrarEstudiante(e);
     }
+public boolean registrarProfesor(String nombre, String direccion,
+            String telefono, int dia, int mes, int anio,
+            String cedula, String area, double salarioHora, int horasDictadas) {
+        Fecha f = new Fecha();
+        f.setDia(dia);
+        f.setMes(mes);
+        f.setAnio(anio);
+
+        Profesor p = new Profesor(nombre, direccion, telefono, f,
+                cedula, area, salarioHora, horasDictadas);
+
+        return colegio.registrarProfesor(p);
+}
+
+
+
 
 }
