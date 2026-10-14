@@ -82,6 +82,32 @@ public class Colegio {
         }
         return reporte;
     }
-    
-    
+    public String reporteProfesoresPorSalario() {
+        Profesor[] ordenados = new Profesor[totalProfesores];
+        for (int i = 0; i < totalProfesores; i++) {
+            ordenados[i] = profesores[i];
+        }
+
+        for (int i = 0; i < ordenados.length - 1; i++) {
+            for (int j = 0; j < ordenados.length - 1 - i; j++) {
+                if (ordenados[j].calcularPago() < ordenados[j + 1].calcularPago()) {
+                    Profesor temporal = ordenados[j];
+                    ordenados[j] = ordenados[j + 1];
+                    ordenados[j + 1] = temporal;
+                }
+            }
+        }
+
+        String reporte = "PROFESORES POR SALARIO TOTAL (MAYOR A MENOR)\n";
+        reporte += "----------------------------------------\n";
+        for (int i = 0; i < ordenados.length; i++) {
+            Profesor p = ordenados[i];
+            reporte += (i + 1) + ". " + p.getNombre()
+                    + " | Cedula: " + p.getCedula()
+                    + " | Area: " + p.getArea()
+                    + " | Pago total: " + p.calcularPago()
+                    + " | Prestaciones: " + p.calcularPrestaciones() + "\n";
+        }
+        return reporte;
+    } 
 }
